@@ -93,7 +93,7 @@ const epokiPoeci = {
             utwory: ["Ballady i romanse", "Dziady cz. III", "Pan Tadeusz"]
         },
         "Juliusz Słowacki": {
-            biografia: "Juliusz Słowacki (1009-1849) - polski poeta i dramaturg romantyczny. Tworzył dramaty romantyczne, poematy i liryki, poruszając tematykę narodową, historiozoficzną i egzystencjalną.",
+            biografia: "Juliusz Słowacki (1809-1849) - polski poeta i dramaturg romantyczny. Tworzył dramaty romantyczne, poematy i liryki, poruszając tematykę narodową, historiozoficzną i egzystencjalną.",
             utwory: ["Kordian", "Balladyna"]
         },
         "Cyprian Norwid": {
@@ -110,7 +110,7 @@ const epokiPoeci = {
             biografia: "Kazimierz Przerwa-Tetmajer (1865-1940) - polski poeta i prozaik, przedstawiciel Młodej Polski. Tworzył wiersze i powieści o tematyce tatrzańskiej, miłosnej i dekadenckiej.",
             utwory: ["Melodia mgieł nocnych (Nad Czarnym Stawem Gąsienicowym)", "Koniec wieku XIX"]
         },
-        "Leopold Staff": {
+"Leopold Staff": {
             biografia: "Leopold Staff (1878-1957) - polski poeta, tłumacz i krytyk literacki. Tworzył wiersze o tematyce filozoficznej, egzystencjalnej i religijnej, posługując się różnorodnymi formami poetyckimi.",
             utwory: ["Kowal", "Deszcz jesienny"]
         }
@@ -180,7 +180,7 @@ epokiLista.addEventListener("click", (event) => {
                         sidebar.classList.add("collapsed");
                         updatePoetaInfoMargin(sidebar);
 
-                        // Dodaj tę linię, aby ukryć menu "Poeci"
+                        // Ukryj cały kontener poeci-dropdown
                         poeciMenu.style.display = "none";
                     }
                 });
