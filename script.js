@@ -185,6 +185,30 @@ epokiLista.addEventListener("click", (event) => {
                         document.querySelector('.epoki-dropdown').style.display = "none";
                     }
                 });
+
+                // Dodaj obsługę zdarzenia touchend dla urządzeń z ekranami dotykowymi
+                a.addEventListener("touchend", (e) => {
+                    e.preventDefault();
+                    const wybranyPoeta = e.target.dataset.poeta;
+                    const danePoety = poeci[wybranyPoeta];
+
+                    if (danePoety) {
+                        poeciMenu.style.display = "none";
+                        document.querySelector('.epoki-dropdown').style.display = "none";
+                    }
+                });
+
+                // Dodaj obsługę zdarzenia touchstart dla urządzeń z ekranami dotykowymi
+                a.addEventListener("touchstart", (e) => {
+                    e.preventDefault();
+                    const wybranyPoeta = e.target.dataset.poeta;
+                    const danePoety = poeci[wybranyPoeta];
+
+                    if (danePoety) {
+                        poeciMenu.style.display = "none";
+                        document.querySelector('.epoki-dropdown').style.display = "none";
+                    }
+                });
             }
 
             poeciMenu.style.display = "block";
