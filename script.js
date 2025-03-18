@@ -110,7 +110,7 @@ const epokiPoeci = {
             biografia: "Kazimierz Przerwa-Tetmajer (1865-1940) - polski poeta i prozaik, przedstawiciel Młodej Polski. Tworzył wiersze i powieści o tematyce tatrzańskiej, miłosnej i dekadenckiej.",
             utwory: ["Melodia mgieł nocnych (Nad Czarnym Stawem Gąsienicowym)", "Koniec wieku XIX"]
         },
-"Leopold Staff": {
+        "Leopold Staff": {
             biografia: "Leopold Staff (1878-1957) - polski poeta, tłumacz i krytyk literacki. Tworzył wiersze o tematyce filozoficznej, egzystencjalnej i religijnej, posługując się różnorodnymi formami poetyckimi.",
             utwory: ["Kowal", "Deszcz jesienny"]
         }
@@ -180,8 +180,9 @@ epokiLista.addEventListener("click", (event) => {
                         sidebar.classList.add("collapsed");
                         updatePoetaInfoMargin(sidebar);
 
-                        // Ukryj cały kontener poeci-dropdown
+                        // Ukryj kontenery Epoki i Poeci
                         poeciMenu.style.display = "none";
+                        document.querySelector('.epoki-dropdown').style.display = "none";
                     }
                 });
             }
@@ -201,6 +202,7 @@ epokiLista.addEventListener("click", (event) => {
 
 stronaGlowna.addEventListener("click", () => {
     poeciMenu.style.display = "none";
+    document.querySelector('.epoki-dropdown').style.display = "none";
     if (poetaInfo) {
         poetaInfo.style.display = "none";
     }
