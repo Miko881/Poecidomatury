@@ -93,7 +93,7 @@ const epokiPoeci = {
             utwory: ["Ballady i romanse", "Dziady cz. III", "Pan Tadeusz"]
         },
         "Juliusz Słowacki": {
-            biografia: "Juliusz Słowacki (1809-1849) - polski poeta i dramaturg romantyczny. Tworzył dramaty romantyczne, poematy i liryki, poruszając tematykę narodową, historiozoficzną i egzystencjalną.",
+            biografia: "Juliusz Słowacki (1009-1849) - polski poeta i dramaturg romantyczny. Tworzył dramaty romantyczne, poematy i liryki, poruszając tematykę narodową, historiozoficzną i egzystencjalną.",
             utwory: ["Kordian", "Balladyna"]
         },
         "Cyprian Norwid": {
@@ -180,9 +180,8 @@ epokiLista.addEventListener("click", (event) => {
                         sidebar.classList.add("collapsed");
                         updatePoetaInfoMargin(sidebar);
 
-                        // Ukryj kontenery Epoki i Poeci
+                        // Dodaj tę linię, aby ukryć menu "Poeci"
                         poeciMenu.style.display = "none";
-                        document.querySelector('.epoki-dropdown').style.display = "none";
                     }
                 });
             }
@@ -202,7 +201,6 @@ epokiLista.addEventListener("click", (event) => {
 
 stronaGlowna.addEventListener("click", () => {
     poeciMenu.style.display = "none";
-    document.querySelector('.epoki-dropdown').style.display = "none";
     if (poetaInfo) {
         poetaInfo.style.display = "none";
     }
