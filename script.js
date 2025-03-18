@@ -184,6 +184,11 @@ epokiLista.addEventListener("click", (event) => {
                         if (window.innerWidth <= 768) {
                             toggleDropdown(poeciMenu, poeciMenu.querySelector(".dropdown-menu"), false);
                         }
+
+                        // Zamknięcie menu bocznego na urządzeniach mobilnych
+                        if (window.innerWidth <= 768) {
+                            closeAllDropdowns();
+                        }
                     }
                 });
             }
