@@ -93,7 +93,7 @@ const epokiPoeci = {
             utwory: ["Ballady i romanse", "Dziady cz. III", "Pan Tadeusz"]
         },
         "Juliusz Słowacki": {
-            biografia: "Juliusz Słowacki (1809-1849) - polski poeta i dramaturg romantyczny. Tworzył dramaty romantyczne, poematy i liryki, poruszając tematykę narodową, historiozoficzną i egzystencjalną.",
+            biografia: "Juliusz Słowacki (1009-1849) - polski poeta i dramaturg romantyczny. Tworzył dramaty romantyczne, poematy i liryki, poruszając tematykę narodową, historiozoficzną i egzystencjalną.",
             utwory: ["Kordian", "Balladyna"]
         },
         "Cyprian Norwid": {
@@ -103,7 +103,7 @@ const epokiPoeci = {
     },
     "Młoda Polska": {
         "Jan Kasprowicz": {
-            biografia: "Jan Kasprowicz (1960-1926) - polski poeta, dramaturg, krytyk literacki i tłumacz. Tworzył wiersze symboliczne i ekspresjonistyczne, poruszając tematykę egzystencjalną, religijną i społeczną.",
+            biografia: "Jan Kasprowicz (1860-1926) - polski poeta, dramaturg, krytyk literacki i tłumacz. Tworzył wiersze symboliczne i ekspresjonistyczne, poruszając tematykę egzystencjalną, religijną i społeczną.",
             utwory: ["Hymny", "Księga ubogich"]
         },
         "Kazimierz Przerwa-Tetmajer": {
@@ -123,7 +123,7 @@ const epokiPoeci = {
     },
     "Współczesna": {
         "Czesław Miłosz": {
-            biografia: "Czesław Miłosz (1911-2004) - polski poeta, prozaik, eseista i tłumacz. Laureat",
+            biografia: "Czesław Miłosz (1911-2004) - polski poeta, prozaik, eseista i tłumacz. Laureat Nagrody Nobla w dziedzinie literatury. Tworzył wiersze, eseje i powieści, poruszając tematykę filozoficzną, religijną i polityczną.",
             utwory: ["Campo di Fiori", "Który skrzywdziłeś"]
         }
     }
@@ -180,10 +180,8 @@ epokiLista.addEventListener("click", (event) => {
                         sidebar.classList.add("collapsed");
                         updatePoetaInfoMargin(sidebar);
 
-                        // Dodano to: zwijanie menu "Poeci" na urządzeniach mobilnych
-                        if (window.innerWidth <= 768) {
-                            poeciMenu.style.display = "none";
-                        }
+                        // Dodaj tę linię, aby ukryć menu "Poeci"
+                        poeciMenu.style.display = "none";
                     }
                 });
             }
