@@ -121,129 +121,129 @@ const epokiPoeci = {
             utwory: ["Pokolenie", "Elegia o ... [chłopcu polskim]"]
         }
     },
-    "Współczesna": {
+"Współczesna": {
         "Czesław Miłosz": {
             biografia: "Czesław Miłosz (1911-2004) - polski poeta, prozaik, eseista i tłumacz. Laureat Nagrody Nobla w dziedzinie literatury. Tworzył wiersze, eseje i powieści, poruszając tematykę filozoficzną, religijną i polityczną.",
-            utwory: ["Campo di Fiori", "Który skrzywdziłeś"]}
+            utwory: ["Campo di Fiori", "Który skrzywdziłeś"]
         }
-    };
-    
-    const updatePoetaInfoMargin = (sidebar) => {
-        if (poetaInfo) {
-            const sidebarWidth = sidebar.classList.contains("collapsed") ? 85 : 270;
-            poetaInfo.style.marginLeft = `${sidebarWidth}px`;
-        } else {
-            console.error("Element poetaInfo nie istnieje!");
-        }
-    };
-    
-    poeciMenu.style.display = "none";
-    
-    epokiLista.addEventListener("click", (event) => {
-        if (event.target.classList.contains("dropdown-link")) {
-            const epoka = event.target.dataset.epoka;
-            const poeci = epokiPoeci[epoka];
-    
-            const poeciListaWEpoce = poeciMenu.querySelector(".dropdown-menu");
-            poeciListaWEpoce.innerHTML = '<li class="nav-item"><a class="nav-link dropdown-title">Poeci</a></li>';
-    
-            if (poeci) {
-                for (const poeta in poeci) {
-                    const li = document.createElement("li");
-                    const a = document.createElement("a");
-                    a.href = "#";
-                    a.classList.add("nav-link", "dropdown-link");
-                    a.textContent = poeta;
-                    a.dataset.poeta = poeta;
-                    li.appendChild(a);
-                    poeciListaWEpoce.appendChild(li);
-    
-                    a.addEventListener("click", (e) => {
-                        e.preventDefault();
-                        const wybranyPoeta = e.target.dataset.poeta;
-                        const danePoety = poeci[wybranyPoeta];
-    
-                        if (danePoety) {
-                            poetaInfo.innerHTML = `
-                                <h2>${wybranyPoeta}</h2>
-                                <p>${danePoety.biografia}</p>
-                                <h3>Ważne utwory:</h3>
-                                <ul>
-                                    ${danePoety.utwory.map(utwor => `<li>${utwor}</li>`).join('')}
-                                </ul>
-                            `;
-                            poetaInfo.style.display = "block";
-                            poetaInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    
-                            const sidebar = document.querySelector(".sidebar");
-                            sidebar.classList.add("collapsed");
-                            updatePoetaInfoMargin(sidebar);
-    
-                            // Zwinięcie menu "Poeci" po wybraniu poety na urządzeniach mobilnych
-                            if (window.innerWidth <= 768) {
-                                poeciMenu.classList.remove("open");
-                                poeciMenu.querySelector(".dropdown-menu").style.height = 0;
-                            }
+    }
+};
+
+const updatePoetaInfoMargin = (sidebar) => {
+    if (poetaInfo) {
+        const sidebarWidth = sidebar.classList.contains("collapsed") ? 85 : 270;
+        poetaInfo.style.marginLeft = `${sidebarWidth}px`;
+    } else {
+        console.error("Element poetaInfo nie istnieje!");
+    }
+};
+
+poeciMenu.style.display = "none";
+
+epokiLista.addEventListener("click", (event) => {
+    if (event.target.classList.contains("dropdown-link")) {
+        const epoka = event.target.dataset.epoka;
+        const poeci = epokiPoeci[epoka];
+
+        const poeciListaWEpoce = poeciMenu.querySelector(".dropdown-menu");
+        poeciListaWEpoce.innerHTML = '<li class="nav-item"><a class="nav-link dropdown-title">Poeci</a></li>';
+
+        if (poeci) {
+            for (const poeta in poeci) {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = "#";
+                a.classList.add("nav-link", "dropdown-link");
+                a.textContent = poeta;
+                a.dataset.poeta = poeta;
+                li.appendChild(a);
+                poeciListaWEpoce.appendChild(li);
+
+                a.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const wybranyPoeta = e.target.dataset.poeta;
+                    const danePoety = poeci[wybranyPoeta];
+
+                    if (danePoety) {
+                        poetaInfo.innerHTML = `
+                            <h2>${wybranyPoeta}</h2>
+                            <p>${danePoety.biografia}</p>
+                            <h3>Ważne utwory:</h3>
+                            <ul>
+                                ${danePoety.utwory.map(utwor => `<li>${utwor}</li>`).join('')}
+                            </ul>
+                        `;
+                        poetaInfo.style.display = "block";
+                        poetaInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                        const sidebar = document.querySelector(".sidebar");
+                        sidebar.classList.add("collapsed");
+                        updatePoetaInfoMargin(sidebar);
+
+                        // Dodano zwijanie menu "Poeci" na urządzeniach mobilnych
+                        if (window.innerWidth <= 768) {
+                            toggleDropdown(poeciMenu, poeciMenu.querySelector(".dropdown-menu"), false);
                         }
-                    });
-                }
-    
-                poeciMenu.style.display = "block";
-    
-                const poeciDropdown = poeciMenu;
-                const poeciDropdownMenu = poeciMenu.querySelector(".dropdown-menu");
-                toggleDropdown(poeciDropdown, poeciDropdownMenu, true);
-    
-                poeciMenu.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                poeciMenu.style.display = "none";
+                    }
+                });
             }
+
+            poeciMenu.style.display = "block";
+
+            const poeciDropdown = poeciMenu;
+            const poeciDropdownMenu = poeciMenu.querySelector(".dropdown-menu");
+            toggleDropdown(poeciDropdown, poeciDropdownMenu, true);
+
+            poeciMenu.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            poeciMenu.style.display = "none";
+        }
+    }
+});
+
+stronaGlowna.addEventListener("click", () => {
+    poeciMenu.style.display = "none";
+    if (poetaInfo) {
+        poetaInfo.style.display = "none";
+    }
+});
+
+console.log("Element poetaInfo:", poetaInfo);
+updatePoetaInfoMargin(sidebar);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const epokiDropdown = document.querySelector('.epoki-dropdown');
+    const epokiContent = document.getElementById('epoki-content');
+
+    epokiDropdown.addEventListener('mouseenter', function() {
+        if (document.querySelector('.sidebar').classList.contains('collapsed')) {
+            epokiContent.style.display = 'block';
         }
     });
-    
-    stronaGlowna.addEventListener("click", () => {
-        poeciMenu.style.display = "none";
-        if (poetaInfo) {
-            poetaInfo.style.display = "none";
+
+    epokiDropdown.addEventListener('mouseleave', function() {
+        if (document.querySelector('.sidebar').classList.contains('collapsed')) {
+            epokiContent.style.display = 'none';
         }
     });
-    
-    console.log("Element poetaInfo:", poetaInfo);
-    updatePoetaInfoMargin(sidebar);
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        const epokiDropdown = document.querySelector('.epoki-dropdown');
-        const epokiContent = document.getElementById('epoki-content');
-    
-        epokiDropdown.addEventListener('mouseenter', function() {
-            if (document.querySelector('.sidebar').classList.contains('collapsed')) {
-                epokiContent.style.display = 'block';
-            }
-        });
-    
-        epokiDropdown.addEventListener('mouseleave', function() {
-            if (document.querySelector('.sidebar').classList.contains('collapsed')) {
-                epokiContent.style.display = 'none';
-            }
-        });
-    
-        // Dodanie obsługi hover dla menu "Poeci"
-        const poeciDropdown = document.querySelector('.poeci-dropdown');
-        const poeciMenuElement = poeciDropdown.querySelector('.dropdown-menu');
-    
-        poeciDropdown.addEventListener('mouseenter', function() {
-            if (document.querySelector('.sidebar').classList.contains('collapsed')) {
-                poeciMenuElement.style.display = 'block';
-                poeciMenuElement.style.opacity = 1;
-                poeciMenuElement.style.pointerEvents = 'auto';
-            }
-        });
-    
-        poeciDropdown.addEventListener('mouseleave', function() {
-            if (document.querySelector('.sidebar').classList.contains('collapsed')) {
-                poeciMenuElement.style.display = '';
-                poeciMenuElement.style.opacity = '';
-                poeciMenuElement.style.pointerEvents = '';
-            }
-        });
+
+    // Dodanie obsługi hover dla menu "Poeci"
+    const poeciDropdown = document.querySelector('.poeci-dropdown');
+    const poeciMenuElement = poeciDropdown.querySelector('.dropdown-menu');
+
+    poeciDropdown.addEventListener('mouseenter', function() {
+        if (document.querySelector('.sidebar').classList.contains('collapsed')) {
+            poeciMenuElement.style.display = 'block';
+            poeciMenuElement.style.opacity = 1;
+            poeciMenuElement.style.pointerEvents = 'auto';
+        }
     });
+
+    poeciDropdown.addEventListener('mouseleave', function() {
+        if (document.querySelector('.sidebar').classList.contains('collapsed')) {
+            poeciMenuElement.style.display = '';
+            poeciMenuElement.style.opacity = '';
+            poeciMenuElement.style.pointerEvents = '';
+        }
+    });
+});
